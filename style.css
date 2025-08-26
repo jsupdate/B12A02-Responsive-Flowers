@@ -5,7 +5,64 @@
 * {
     /* margin: auto; */
     /* margin-right: 5px; */
-    max-width: 1400px;
+    max-width: auto;
+}
+
+/* Fonts */
+h1 {
+  font-family: 'Noto Serif', serif;
+  font-size: 3rem;   /* 48px */
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-family: 'Noto Serif', serif;
+  font-size: 2rem;   /* 32px */
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-family: 'Noto Serif', serif;
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* paragraph and body */
+p, .banner-desc, .nav-link {
+  font-family: 'Inter', sans-serif;
+}
+
+.section-desc {
+  font-size: 1.125rem; /* 18px for intro paragraphs */
+  margin-bottom: 1.5rem;
+}
+
+/* buttons */
+.btn-primary {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;      /* 16px */
+  font-weight: 600;
+  padding: 0.75rem 1.5rem; /* 12px top/bottom, 24px sides */
+  margin-top: 1rem;
+  background-color: #E95A08;
+  border-radius: 3px;
+  color: #FCE3B0;
+  text-decoration: none;
+  /* transition: background-color 0.5s ease; */
+  /* transition-delay: 2sec; */  
+  /* TRANSITIONS DO NOT WORK HERE */
+}
+
+.btn-primary:hover {
+  color: azure;
+  background-color: palevioletred;
+  font-size: 3rem;      /* 16px */
+  font-weight: 800;
 }
 
 /* reusable classes */
@@ -14,6 +71,8 @@
 }
 .nav-link { 
     color: #333; text-decoration: none; padding: 0 1rem; font-weight: 500; 
+    font-size: 1rem;   /* 16px */
+    line-height: 1.6;
 }
 .nav-link:hover { 
     color: #999; 
@@ -56,6 +115,44 @@
   transition: 0.3s;
 }
 
+/* Banner Style */
+.banner {
+  padding: 2rem 0;
+  gap: 2rem; /* adds breathing space between text & image */
+}
+
+.banner-text {
+  max-width: 50%;
+}
+
+.banner-title {
+  font-family: 'Noto Serif', serif;
+  font-size: 3rem;   /* 48px */
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.fresh {
+  color: #E95A08;
+}
+
+.banner-desc {
+  font-size: 1.125rem; /* 1rem = 16px */
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.banner-img img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* optional for softer look */
+}
+
+
+
+
 /* responsive styles */
 @media screen and (max-width: 768px) {
   /* nav {
@@ -95,5 +192,34 @@
     right: 1rem;
     top: 4rem;
   }
+}
 
+/* responsive fonts */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }  /* 32px */
+  h2 { font-size: 1.5rem; } /* 24px */
+  h3 { font-size: 1.25rem; } /* 20px */
+
+  p, .banner-desc {
+    font-size: 0.95rem; /* ~15px for readability */
+  }
+
+  .btn-primary {
+    width: 100%; /* full width buttons for tap targets */
+    text-align: center;
+  }
+}
+
+/* Banner Responsive adjustments */
+@media (max-width: 768px) {
+  .banner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .banner-text, .banner-img {
+    max-width: 100%;
+  }
+  .banner-text {
+    margin-bottom: 1.5rem;
+  }
 }
