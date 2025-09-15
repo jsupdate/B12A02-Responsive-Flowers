@@ -328,7 +328,7 @@
 }
 
 
-/* Grid Layout for Deals */
+/* Grid Layout for Deals
 .deals-grid {
   display: grid;
   grid-template-columns: 40% 60%;
@@ -340,7 +340,7 @@
   grid-template-rows: 1fr 1fr;
 }
 
-/* Overlay button */
+Overlay button
 .btn-overlay {
   background: rgba(233,90,8,0.9); 
   color: #fff;
@@ -354,7 +354,7 @@
   background: rgba(233,90,8,1);
 }
 
-/* Responsive: stack columns */
+Responsive: stack columns
 @media (max-width: 768px) {
   .deals-grid {
     grid-template-columns: 1fr;
@@ -362,4 +362,196 @@
   .deals-left {
     grid-template-rows: none;
   }
+} */
+
+
+/* Latest Deals: image card with centered overlay */
+.deal-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #000; /* fallback while image loads */
 }
+
+/* image at 80% opacity for text readability */
+.deal-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.8;
+  transition: transform 300ms ease;
+}
+
+/* subtle zoom on hover */
+.deal-item:hover .deal-image {
+  transform: scale(1.03);
+}
+
+/* overlay that centers content */
+.deal-overlay {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+  pointer-events: none; /* allow clicks to pass to button only */
+}
+
+/* semi-transparent layer to improve contrast (keeps image visible) */
+.deal-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 1;
+}
+
+/* make overlay children interactive and on top */
+.deal-overlay > * {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/* title styling */
+.deal-title {
+  font-family: 'Noto Serif', serif;
+  color: #fff;
+  font-size: 1.5rem;
+  margin: 0;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+}
+
+/* button over image: reuse .btn-primary but ensure it sits above overlay layer */
+.deal-cta {
+  pointer-events: auto;
+}
+
+/* small screens: slightly smaller title */
+@media (max-width: 768px) {
+  .deal-title { font-size: 1.25rem; }
+}
+
+/* Subscribe Section */
+/* .subscribe {
+  position: relative;
+  color: #fff;
+}
+.subscribe h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.subscribe-form input {
+  font-size: 1rem;
+  outline: none;
+}
+.subscribe-form button {
+  transition: background 0.3s ease;
+}
+.subscribe-form button:hover {
+  background: #d94f07;
+} */
+
+.subscribe {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  min-height: 320px; /* adjust as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem; /* matches p-10 intent */
+}
+
+/* background image: cover whole section and sit behind content at 80% opacity */
+.subscribe > img {
+  position: absolute;
+  inset: 0;               /* top:0; right:0; bottom:0; left:0; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;           /* 80% opacity */
+  z-index: 0;
+  pointer-events: none;   /* allow clicks to hit the form */
+}
+
+/* bring the form above the image and center it */
+.subscribe-form {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+/* input/button styling for visibility over image */
+.subscribe-form input[type="email"] {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+  background: rgba(255,255,255,0.95);
+  color: #111;
+}
+
+.subscribe-form button {
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background: #E95A08;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* responsive: stack the form on small screens */
+@media (max-width: 480px) {
+  .subscribe-form { flex-direction: column; gap: 0.75rem; }
+  .subscribe-form input[type="email"],
+  .subscribe-form button { width: 100%; border-radius: 6px; }
+}
+
+/* Footer */
+.footer {
+  font-size: 0.95rem;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+}
+.footer-links a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-social i {
+  cursor: pointer;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+  }
+  .footer-about {
+    grid-column: span 2;
+  }
+}
+@media (max-width: 500px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-social {
+    justify-content: center;
+  }
+}
+
+
